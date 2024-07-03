@@ -1,15 +1,15 @@
 class SearchInfo {
-  String? textSnippet;
+  final String? textSnippet;
 
-  SearchInfo({this.textSnippet});
+  SearchInfo({
+    this.textSnippet,
+  });
 
-  SearchInfo.fromJson(Map<String, dynamic> json) {
-    textSnippet = json['textSnippet'];
-  }
+  factory SearchInfo.fromJson(Map<String, dynamic> json) => SearchInfo(
+    textSnippet: json["textSnippet"],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['textSnippet'] = textSnippet;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "textSnippet": textSnippet,
+  };
 }

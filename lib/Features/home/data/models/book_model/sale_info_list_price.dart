@@ -1,18 +1,19 @@
-class ListPrice {
-  double? amount;
-  String? currencyCode;
+class SaleInfoListPrice {
+  final double? amount;
+  final String? currencyCode;
 
-  ListPrice({this.amount, this.currencyCode});
+  SaleInfoListPrice({
+    this.amount,
+    this.currencyCode,
+  });
 
-  ListPrice.fromJson(Map<String, dynamic> json) {
-    amount = json['amount'];
-    currencyCode = json['currencyCode'];
-  }
+  factory SaleInfoListPrice.fromJson(Map<String, dynamic> json) => SaleInfoListPrice(
+    amount: json["amount"]?.toDouble(),
+    currencyCode: json["currencyCode"],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['amount'] = amount;
-    data['currencyCode'] = currencyCode;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "amount": amount,
+    "currencyCode": currencyCode,
+  };
 }

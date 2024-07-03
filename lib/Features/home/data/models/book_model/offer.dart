@@ -1,31 +1,25 @@
 import 'package:bookly_app/Features/home/data/models/book_model/offer_list_price.dart';
 
-class Offers {
-  int? finskyOfferType;
-  ListPrice? listPrice;
-  ListPrice? retailPrice;
+class Offer {
+  final int? finskyOfferType;
+  final OfferListPrice? listPrice;
+  final OfferListPrice? retailPrice;
 
-  Offers({this.finskyOfferType, this.listPrice, this.retailPrice});
+  Offer({
+    this.finskyOfferType,
+    this.listPrice,
+    this.retailPrice,
+  });
 
-  Offers.fromJson(Map<String, dynamic> json) {
-    finskyOfferType = json['finskyOfferType'];
-    listPrice = json['listPrice'] != null
-        ? ListPrice.fromJson(json['listPrice'])
-        : null;
-    retailPrice = json['retailPrice'] != null
-        ? ListPrice.fromJson(json['retailPrice'])
-        : null;
-  }
+  factory Offer.fromJson(Map<String, dynamic> json) => Offer(
+    finskyOfferType: json["finskyOfferType"],
+    listPrice: json["listPrice"] == null ? null : OfferListPrice.fromJson(json["listPrice"]),
+    retailPrice: json["retailPrice"] == null ? null : OfferListPrice.fromJson(json["retailPrice"]),
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['finskyOfferType'] = finskyOfferType;
-    if (listPrice != null) {
-      data['listPrice'] = listPrice!.toJson();
-    }
-    if (retailPrice != null) {
-      data['retailPrice'] = retailPrice!.toJson();
-    }
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "finskyOfferType": finskyOfferType,
+    "listPrice": listPrice?.toJson(),
+    "retailPrice": retailPrice?.toJson(),
+  };
 }

@@ -1,18 +1,19 @@
-class ListPrice {
-  int? amountInMicros;
-  String? currencyCode;
+class OfferListPrice {
+  final int? amountInMicros;
+  final String? currencyCode;
 
-  ListPrice({this.amountInMicros, this.currencyCode});
+  OfferListPrice({
+    this.amountInMicros,
+    this.currencyCode,
+  });
 
-  ListPrice.fromJson(Map<String, dynamic> json) {
-    amountInMicros = json['amountInMicros'];
-    currencyCode = json['currencyCode'];
-  }
+  factory OfferListPrice.fromJson(Map<String, dynamic> json) => OfferListPrice(
+    amountInMicros: json["amountInMicros"],
+    currencyCode: json["currencyCode"],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['amountInMicros'] = amountInMicros;
-    data['currencyCode'] = currencyCode;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "amountInMicros": amountInMicros,
+    "currencyCode": currencyCode,
+  };
 }

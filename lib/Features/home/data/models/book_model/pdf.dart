@@ -12,5 +12,4 @@ class Pdf {
     map['isAvailable'] = isAvailable;
     return map;
   }
-
 }
