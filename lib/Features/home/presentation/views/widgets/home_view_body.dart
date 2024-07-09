@@ -1,10 +1,9 @@
 import 'package:bookly_app/Core/utils/styles.dart';
-import 'package:bookly_app/Features/home/presentation/views/widgets/book_list_view.dart';
 import 'package:bookly_app/Features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:bookly_app/Features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'featured_books_list_view.dart';
 import 'featured_books_list_view_bloc_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
