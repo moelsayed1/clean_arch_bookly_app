@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'featured_books_list_view.dart';
+import 'featured_books_list_view_bloc_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -18,19 +19,19 @@ class HomeViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(),
-              FeaturesBooksListView(),
+              FeaturedBooksListViewBlocBuilder(),
               SizedBox(
                 height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
-                  'Best Seller',
+                  'Newest Books',
                   style: Style.textStyle18,
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
             ],
           ),
@@ -38,11 +39,13 @@ class HomeViewBody extends StatelessWidget {
         SliverFillRemaining(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: BookListView(),
+            child: NewestBooksListView(),
           ),
         ),
       ],
     );
   }
 }
+
+
 

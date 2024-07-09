@@ -9,7 +9,7 @@ class SearchResultListView extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return BookListViewItem();
+        return NewestBooksListViewItem();
       },
     );
   }

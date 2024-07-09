@@ -14,6 +14,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
+
+  Bloc.observer = SimpleBlocObserver();
+
   await Hive.initFlutter();
 
   Hive.registerAdapter(BookEntityAdapter());
@@ -23,8 +26,6 @@ void main() async {
   await Hive.openBox<BookEntity>(kNewestBox);
 
   setupServiceLocator();
-
-  Bloc.observer = SimpleBlocObserver();
 
   runApp(const BooklyApp());
 }
@@ -42,7 +43,7 @@ class BooklyApp extends StatelessWidget {
               FetchFeaturedBooksUseCase(
                 getIt.get<HomeRepoImpl>(),
               ),
-            );
+            )..fetchFeaturedBooks();
           },
         ),
         BlocProvider(
