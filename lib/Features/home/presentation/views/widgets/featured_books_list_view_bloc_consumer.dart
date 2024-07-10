@@ -1,4 +1,5 @@
 import 'package:bookly_app/Core/utils/custom_loading_indicator.dart';
+import 'package:bookly_app/Core/utils/functions/build_show_snack_bar.dart';
 import 'package:bookly_app/Features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app/Features/home/presentation/manager/cubits/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_app/Features/home/presentation/manager/cubits/featured_books_cubit/featured_books_state.dart';
@@ -27,10 +28,13 @@ class _FeaturedBooksListViewBlocConsumerState
         if (state is FeaturedBooksSuccess) {
           return books.addAll(state.books);
         }
+        if (state is FeaturedBooksPaginationFailure) {
+          buildShowSnackBar(context, state.errMessage);
+        }
       },
       builder: (context, state) {
         if (state is FeaturedBooksSuccess ||
-            state is FeaturedBooksPaginationLoading) {
+            state is FeaturedBooksPaginationLoading || state is FeaturedBooksPaginationFailure) {
           return FeaturesBooksListView(
             books: books,
           );
